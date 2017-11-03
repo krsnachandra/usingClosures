@@ -1,5 +1,12 @@
 var wrapLog = function (callback, name) {
-  /* your code here */
+  return function() {
+    // var args = Array.prototype.splice.call(arguments, 1);
+    var args = [];
+    for (var arg in arguments) {
+      args.push(arguments[arg])
+    };
+    console.log(name + "(" + args + ")" + " => " + callback.apply(null, args));
+  };
 };
 
 var area = function (x, y) {
